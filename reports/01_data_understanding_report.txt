@@ -1,0 +1,71 @@
+UPI Shield AI — Data Understanding Report
+==================================================
+
+Dataset Shape:
+Rows: 6362620
+Columns: 11
+
+Column Names:
+- step
+- type
+- amount
+- nameOrig
+- oldbalanceOrg
+- newbalanceOrig
+- nameDest
+- oldbalanceDest
+- newbalanceDest
+- isFraud
+- isFlaggedFraud
+
+Missing Values:
+step              0
+type              0
+amount            0
+nameOrig          0
+oldbalanceOrg     0
+newbalanceOrig    0
+nameDest          0
+oldbalanceDest    0
+newbalanceDest    0
+isFraud           0
+isFlaggedFraud    0
+dtype: int64
+
+Duplicate Records:
+0
+
+Fraud Class Distribution:
+  Transaction Type    Count  Percentage
+0           Normal  6354407     99.8709
+1            Fraud     8213      0.1291
+
+Transaction Type Distribution:
+          Transaction Count  Percentage
+type                                   
+CASH_OUT            2237500     35.1663
+PAYMENT             2151495     33.8146
+CASH_IN             1399284     21.9923
+TRANSFER             532909      8.3756
+DEBIT                 41432      0.6512
+
+Fraud by Transaction Type:
+          Total Transactions  Fraud Transactions  Fraud Percentage
+type                                                              
+CASH_OUT             2237500                4116            0.1840
+TRANSFER              532909                4097            0.7688
+CASH_IN              1399284                   0            0.0000
+DEBIT                  41432                   0            0.0000
+PAYMENT              2151495                   0            0.0000
+
+Initial Observations:
+1. The dataset was loaded successfully from Google Drive.
+2. The dataset contains 6362620 rows and 11 columns.
+3. The target column is 'isFraud', where 1 represents fraud and 0 represents normal transaction.
+4. The dataset contains 8213 fraud transactions and 6354407 normal transactions.
+5. Fraud transactions represent only 0.1291% of the dataset, confirming class imbalance.
+6. The dataset contains transaction types such as PAYMENT, TRANSFER, CASH_OUT, CASH_IN, and DEBIT.
+7. Missing value check shows whether cleaning is required before modeling.
+8. The columns nameOrig and nameDest are high-cardinality ID columns and may not be directly useful for model training.
+9. The isFlaggedFraud column must be handled carefully because it may contain rule-based fraud information.
+10. Further EDA is required to understand fraud patterns by transaction type, amount, and balance changes.

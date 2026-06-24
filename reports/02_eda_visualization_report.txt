@@ -1,0 +1,82 @@
+UPI Shield AI — EDA Visualization Report
+==================================================
+
+Dataset Used:
+Raw dataset path: /content/drive/MyDrive/UPI-Shield-AI-Transaction-Risk-Scoring/data/raw/onlinefraud.csv
+EDA sample shape: (108213, 21)
+
+Class Distribution - Full Dataset:
+    Class  Percentage
+0  Normal     99.8709
+1   Fraud      0.1291
+
+Transaction Type Summary:
+          Transaction Count  Percentage
+type                                   
+CASH_OUT            2237500     35.1663
+PAYMENT             2151495     33.8146
+CASH_IN             1399284     21.9923
+TRANSFER             532909      8.3756
+DEBIT                 41432      0.6512
+
+Fraud by Transaction Type:
+          Total Transactions  Fraud Transactions  Fraud Percentage
+type                                                              
+TRANSFER              532909                4097            0.7688
+CASH_OUT             2237500                4116            0.1840
+CASH_IN              1399284                   0            0.0000
+DEBIT                  41432                   0            0.0000
+PAYMENT              2151495                   0            0.0000
+
+Amount Summary:
+                           count         mean          std    min         25%  \
+Normal Transactions 6354407.0000  178197.0417  596236.9813 0.0100  13368.3950   
+Fraud Transactions     8213.0000 1467967.2991 2404252.9472 0.0000 127091.3300   
+
+                            50%          75%           max  
+Normal Transactions  74684.7200  208364.7600 92445516.6400  
+Fraud Transactions  441423.4400 1517771.4800 10000000.0000  
+
+Zero Balance Summary:
+   isFraud  Zero New Sender Balance Count  Total Transactions  \
+0        0                          56931              100000   
+1        1                           8053                8213   
+
+   Zero Balance Percentage   Class  
+0                  56.9310  Normal  
+1                  98.0519   Fraud  
+
+Feature Ideas:
+                         Feature  \
+0                           type   
+1                         amount   
+2                balanceDiffOrig   
+3                balanceDiffDest   
+4               errorBalanceOrig   
+5               errorBalanceDest   
+6  isZeroBalanceAfterTransaction   
+7                      hourOfDay   
+8                   isHighAmount   
+
+                                              Reason  
+0  Some transaction types show higher fraud patte...  
+1  Fraud transactions may have different amount b...  
+2       Captures money deducted from sender account.  
+3          Captures money added to receiver account.  
+4        Checks mismatch in expected sender balance.  
+5      Checks mismatch in expected receiver balance.  
+6    Sender balance becoming zero can be suspicious.  
+7     Time-based transaction behavior may be useful.  
+8   Large amount transactions may carry higher risk.  
+
+EDA Observations:
+1. The dataset is highly imbalanced with very few fraud transactions compared to normal transactions.
+2. Transaction type is an important feature because fraud cases are concentrated in specific transaction types.
+3. Transaction amount shows different behavior between fraud and normal transactions.
+4. Sender balance difference may help identify suspicious balance changes.
+5. Sender balance becoming zero after transaction can be a useful risk signal.
+6. Receiver balance difference and receiver balance error may help capture abnormal receiver-side behavior.
+7. Balance error features can be useful because they compare expected and actual balance changes.
+8. The step column can be converted into hour-of-day to create a time-based feature.
+9. Correlation analysis is useful, but non-linear models may capture fraud patterns better than linear correlation suggests.
+10. Feature engineering is required before model training to improve fraud detection performance.

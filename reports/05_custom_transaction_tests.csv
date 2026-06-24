@@ -1,0 +1,4 @@
+Test Case,Prediction,Fraud Probability,Risk Score,Risk Level,Recommended Action
+Normal Transaction,Normal / Safe,0.0,0.0,No/Low Risk,Hold transaction and perform manual verification.
+Suspicious Transaction,Suspicious / Fraud,1.0,100.0,High Risk,Hold transaction and perform manual verification.
+Medium Risk Transaction,Normal / Safe,0.0,0.0,No/Low Risk,Hold transaction and perform manual verification.

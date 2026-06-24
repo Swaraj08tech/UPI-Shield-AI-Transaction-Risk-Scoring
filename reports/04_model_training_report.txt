@@ -1,0 +1,72 @@
+UPI Shield AI — Model Training Report
+=======================================================
+
+Dataset Used:
+/content/drive/MyDrive/UPI-Shield-AI-Transaction-Risk-Scoring/data/processed/processed_fraud_data.parquet
+
+Feature Count:
+24
+
+Train-Test Split:
+Test Size: 20%
+Random State: 42
+Stratified Split: Yes
+
+Training Target Distribution Before SMOTE:
+isFraud
+0    160000
+1      6570
+Name: count, dtype: int64
+
+Training Target Distribution After SMOTE:
+isFraud
+0    160000
+1     80000
+Name: count, dtype: int64
+
+SMOTE Strategy:
+Applied only on training data
+sampling_strategy = 0.5
+
+Models Trained:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- XGBoost
+
+Model Comparison:
+                 Model  Accuracy  Precision  Recall  F1 Score  ROC AUC  \
+0        Decision Tree    0.9994     0.9868  0.9976    0.9921   0.9989   
+1        Random Forest    0.9998     0.9988  0.9970    0.9979   0.9998   
+2              XGBoost    0.9998     0.9976  0.9963    0.9970   0.9996   
+3  Logistic Regression    0.9995     0.9921  0.9957    0.9939   0.9995   
+
+   True Negatives  False Positives  False Negatives  True Positives  
+0           39978               22                4            1639  
+1           39998                2                5            1638  
+2           39996                4                6            1637  
+3           39987               13                7            1636  
+
+Best Model Selected:
+Decision Tree
+
+Best Model Metrics:
+Model              Decision Tree
+Accuracy                  0.9994
+Precision                 0.9868
+Recall                    0.9976
+F1 Score                  0.9921
+ROC AUC                   0.9989
+True Negatives             39978
+False Positives               22
+False Negatives                4
+True Positives              1639
+Name: 0, dtype: object
+
+Saved Files:
+- logistic_regression_model.pkl
+- decision_tree_model.pkl
+- random_forest_model.pkl
+- xgboost_model.pkl
+- best_model.pkl
+- 04_model_training_comparison.csv

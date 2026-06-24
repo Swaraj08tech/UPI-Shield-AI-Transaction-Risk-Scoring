@@ -1,0 +1,101 @@
+UPI Shield AI — Final Model Evaluation Report
+============================================================
+
+Best Model:
+Decision Tree
+
+Evaluation Metrics:
+           Model  Accuracy  Precision  Recall  F1 Score  ROC AUC  \
+0  Decision Tree    0.9994     0.9868  0.9976    0.9921   0.9989   
+
+   Average Precision  
+0             0.9972  
+
+Confusion Matrix:
+[[39978    22]
+ [    4  1639]]
+
+Confusion Matrix Values:
+True Negatives: 39978
+False Positives: 22
+False Negatives: 4
+True Positives: 1639
+
+Classification Report:
+                    precision    recall  f1-score   support
+
+Normal Transaction       1.00      1.00      1.00     40000
+ Fraud Transaction       0.99      1.00      0.99      1643
+
+          accuracy                           1.00     41643
+         macro avg       0.99      1.00      1.00     41643
+      weighted avg       1.00      1.00      1.00     41643
+
+
+Error Summary:
+                                Metric  Value
+0                  False Positive Rate 0.0006
+1                  False Negative Rate 0.0024
+2        Fraud Detection Rate / Recall 0.9976
+3  Normal Detection Rate / Specificity 0.9994
+
+Risk Level Distribution:
+Risk Level
+No/Low Risk    39972
+High Risk       1650
+Medium Risk       21
+Name: count, dtype: int64
+
+Threshold Analysis:
+   Threshold  Accuracy  Precision  Recall  F1 Score  False Positives  \
+0     0.3000    0.9991     0.9808  0.9976    0.9891               32   
+1     0.4000    0.9994     0.9868  0.9976    0.9921               22   
+2     0.5000    0.9994     0.9868  0.9976    0.9921               22   
+3     0.6000    0.9995     0.9903  0.9976    0.9939               16   
+4     0.7000    0.9996     0.9933  0.9976    0.9954               11   
+
+   False Negatives  True Positives  True Negatives  
+0                4            1639           39968  
+1                4            1639           39978  
+2                4            1639           39978  
+3                4            1639           39984  
+4                4            1639           39989  
+
+Custom Transaction Test Results:
+                 Test Case          Prediction  Fraud Probability  Risk Score  \
+0       Normal Transaction       Normal / Safe             0.0000      0.0000   
+1   Suspicious Transaction  Suspicious / Fraud             1.0000    100.0000   
+2  Medium Risk Transaction       Normal / Safe             0.0000      0.0000   
+
+    Risk Level                                 Recommended Action  
+0  No/Low Risk  Hold transaction and perform manual verification.  
+1    High Risk  Hold transaction and perform manual verification.  
+2  No/Low Risk  Hold transaction and perform manual verification.  
+
+Top 15 Feature Importances:
+                Feature  Importance
+17  logErrorBalanceOrig      0.7048
+3        newbalanceOrig      0.2555
+9      errorBalanceDest      0.0237
+18  logErrorBalanceDest      0.0095
+15   logBalanceDiffOrig      0.0018
+8      errorBalanceOrig      0.0016
+0                  step      0.0008
+2         oldbalanceOrg      0.0008
+4        oldbalanceDest      0.0004
+7       balanceDiffDest      0.0003
+5        newbalanceDest      0.0003
+16   logBalanceDiffDest      0.0002
+12            hourOfDay      0.0002
+6       balanceDiffOrig      0.0002
+1                amount      0.0000
+
+Saved Visual Outputs:
+- confusion_matrix_best_model.png
+- roc_curve_best_model.png
+- precision_recall_curve_best_model.png
+- risk_level_distribution.png
+- feature_importance_best_model.png, if available
+
+Conclusion:
+The best model was evaluated on original test data. Fraud probability was converted into a risk score and risk level. Custom transaction testing confirms that the model can be used in the Streamlit application for transaction risk scoring.

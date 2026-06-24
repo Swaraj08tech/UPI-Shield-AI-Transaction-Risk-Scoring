@@ -1,0 +1,68 @@
+UPI Shield AI — Feature Engineering Report
+=======================================================
+
+Data Strategy:
+Loaded only required columns from the raw dataset to reduce RAM usage.
+Kept all fraud records and sampled normal records for modeling.
+
+Normal Sample Size:
+200000
+
+Processed Dataset Shape:
+(208213, 25)
+
+Created Features:
+- balanceDiffOrig
+- balanceDiffDest
+- errorBalanceOrig
+- errorBalanceDest
+- isZeroBalanceAfterTransaction
+- isHighAmount
+- hourOfDay
+- isHighRiskType
+- logAmount
+- logBalanceDiffOrig
+- logBalanceDiffDest
+- logErrorBalanceOrig
+- logErrorBalanceDest
+
+Final Model Features:
+- step
+- amount
+- oldbalanceOrg
+- newbalanceOrig
+- oldbalanceDest
+- newbalanceDest
+- balanceDiffOrig
+- balanceDiffDest
+- errorBalanceOrig
+- errorBalanceDest
+- isZeroBalanceAfterTransaction
+- isHighAmount
+- hourOfDay
+- isHighRiskType
+- logAmount
+- logBalanceDiffOrig
+- logBalanceDiffDest
+- logErrorBalanceOrig
+- logErrorBalanceDest
+- type_CASH_IN
+- type_CASH_OUT
+- type_DEBIT
+- type_PAYMENT
+- type_TRANSFER
+
+Target Column:
+isFraud
+
+High Amount Threshold:
+652597.4249999999
+
+Saved Files:
+- processed_fraud_data.parquet
+- processed_fraud_data_preview.csv
+- feature_list.json
+
+
+Important Note:
+SMOTE was not applied in this notebook. SMOTE will be applied only on training data after train-test split in Notebook 4 to avoid data leakage.

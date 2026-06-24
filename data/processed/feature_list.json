@@ -1,0 +1,36 @@
+{
+    "features": [
+        "step",
+        "amount",
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "oldbalanceDest",
+        "newbalanceDest",
+        "balanceDiffOrig",
+        "balanceDiffDest",
+        "errorBalanceOrig",
+        "errorBalanceDest",
+        "isZeroBalanceAfterTransaction",
+        "isHighAmount",
+        "hourOfDay",
+        "isHighRiskType",
+        "logAmount",
+        "logBalanceDiffOrig",
+        "logBalanceDiffDest",
+        "logErrorBalanceOrig",
+        "logErrorBalanceDest",
+        "type_CASH_IN",
+        "type_CASH_OUT",
+        "type_DEBIT",
+        "type_PAYMENT",
+        "type_TRANSFER"
+    ],
+    "target": "isFraud",
+    "high_amount_threshold": 652597.4249999999,
+    "normal_sample_size": 200000,
+    "high_risk_types": [
+        "TRANSFER",
+        "CASH_OUT"
+    ],
+    "processed_file": "processed_fraud_data.parquet"
+}
